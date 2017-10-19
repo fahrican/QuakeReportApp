@@ -21,10 +21,10 @@ import static android.R.attr.resource;
  */
 
 public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
-/*
-    public EarthquakeAdapter(Activity context, ArrayList<String> earthquakes) {
-        super();
-    }*/
+
+    public EarthquakeAdapter(Activity context, ArrayList<Earthquake> earthquakes) {
+        super(context, 0, earthquakes);
+    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
