@@ -166,6 +166,17 @@ public final class QueryUtils {
      * Query the USGS dataset and return a list of {@link Earthquake} objects.
      */
     public static List<Earthquake> fetchEarthquakeData(String requestUrl) {
+
+        /**We are forcing the background thread to pause execution and wait for 2 seconds
+         * (which is 2000 milliseconds), before proceeding to execute the rest of lines of code
+         * in this method.
+         */
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         // Create URL object
         URL url = createUrl(requestUrl);
 
@@ -180,6 +191,7 @@ public final class QueryUtils {
         // Extract relevant fields from the JSON response and create a list of {@link Earthquake}s
         List<Earthquake> earthquakes = extractFeatureFromJson(jsonResponse);
 
+        Log.v("EarthquakeActivity", "fetchEarthquakeData: " + LOG_TAG);
         // Return the list of {@link Earthquake}s
         return earthquakes;
     }
